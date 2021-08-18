@@ -3,6 +3,7 @@ const app = express();
 const morgan = require("morgan");
 const cors = require("cors");
 const contactRoutes = require("./routes/contact");
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -27,4 +28,4 @@ if (app.get("env") === "development") {
     });
 }
 
-app.listen(3000, () => console.log("Server starting on port 3000!"));
+app.listen(3000, () => console.log(`Server starting on port ${port}`));
