@@ -16,4 +16,4 @@ This project was built using:
 
 Oluwatimilehin Idowu - [@twitter](https://twitter.com/timmy_id) - [email](mailto:oluwatimilehin.id@gmail.com) - [LinkedIn](https://www.linkedin.com/in/oluwatimilehin-idowu/)
 * Live Link: [https://resume-hng-app.herokuapp.com/](https://resume-hng-app.herokuapp.com/)
-* Project Link: [https://github.com/Timmy-id/my-resume](https://github.com/Timmy-id/my-resume)
+* Project Link: [https://github.com/Timmy-id/my_resume](https://github.com/Timmy-id/my_resume)
