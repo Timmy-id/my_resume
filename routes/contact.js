@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../db");
+const nodemailer = require("nodemailer");
+const pool = require("../db/index");
+require("dotenv").config();
 
 router.post("/", async function (req, res) {
     try {
@@ -10,7 +12,36 @@ router.post("/", async function (req, res) {
                 message: "Missing Credentials"
             });
         }
-        const result = await db.query(
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.USER,
+                pass: process.env.PASSWORD
+            }
+        })
+
+        const mailOptions = {
+            from: req.body.email,
+            to: process.env.USER,
+            subject: `Mwssage from ${req.body.email}`,
+            text: req.body.message
+        }
+
+        transporter.sendMail(mailOptions, (err, info) => {
+            if (err) {
+                console.log(err)
+                res.json({
+                    status: "error",
+                    error: err.message
+                })
+            } else {
+                console.log("Email sent: " + info.response)
+                res.json({ status: "success" });
+            }
+        })
+
+        const result = await pool.query(
             `INSERT INTO contacts (full_name, email, phone_number, message) 
                 VALUES ($1, $2, $3, $4) RETURNING *`,
                 [req.body.full_name, req.body.email, req.body.phone_number, req.body.message]
@@ -26,7 +57,7 @@ router.post("/", async function (req, res) {
 
 router.get("/", async function (req, res) {
     try {
-        const data = await db.query("SELECT * FROM contacts")
+        const data = await pool.query("SELECT * FROM contacts")
         return res.status(200).json(data.rows)
     } catch (err) {
         return res.status(400).json({
