@@ -1,6 +1,6 @@
 # my_resume
 
-This project allows you to quickly view a user's GitHub repository without logging in to GitHub.
+This is my Resume.
 
 ### Built With
 
