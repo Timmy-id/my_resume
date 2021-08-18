@@ -23,7 +23,6 @@ contactForm.addEventListener('submit', (e) => {
     xhr.open('POST', '/');
     xhr.setRequestHeader('content-type', 'application/json');
     xhr.onload = function() {
-        console.log(xhr.responseText)
         if (xhr.responseText == 'success') {
             alert(`Thank you for reaching out, ${formData.fullName}`)
             fullName.value = '',
