@@ -24,7 +24,7 @@ router.post("/", async function (req, res) {
         const mailOptions = {
             from: req.body.email,
             to: process.env.USER,
-            subject: `Mwssage from ${req.body.email}`,
+            subject: `Message from ${req.body.email}`,
             text: req.body.message
         }
 

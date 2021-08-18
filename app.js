@@ -18,4 +18,8 @@ app.use(function (req, res, next) {
     next(err);
 });
 
+app.get("/" (req, res) => {
+    res.send("Welcome to contact API")
+})
+
 app.listen(3000, () => console.log(`Server starting on port ${port}`));
