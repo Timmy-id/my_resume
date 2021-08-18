@@ -21,4 +21,14 @@ router.post("/", async function (req, res, next) {
     }
 });
 
+router.get("/", async function (req, res, next) {
+    try {
+        const data = await db.query("SELECT * FROM contacts")
+        return res.status(200).json(data.rows)
+    } catch (err) {
+        return next(err)
+    }
+    
+})
+
 module.exports = router;
