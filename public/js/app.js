@@ -23,12 +23,13 @@ contactForm.addEventListener('submit', (e) => {
     xhr.open('POST', '/');
     xhr.setRequestHeader('content-type', 'application/json');
     xhr.onload = function() {
-        if (xhr.responseText == 'success') {
+        if (xhr.status == '200') {
             alert(`Thank you for reaching out, ${formData.fullName}`)
             fullName.value = '',
             email.value = '',
             phoneNumber.value = '',
             message.value = ''
+            // console.log(xhr.status)
         } else (
             alert ('Something went wrong')
         )
