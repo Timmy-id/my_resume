@@ -1,9 +1,13 @@
-const { Client } = require("pg");
+require('dotenv').config()
 
-const client = new Client({
-    connectionString: "postgresql://postgres:password@localhost/hng_task_two"
-});
+const {Pool} = require('pg')
+const isProduction = process.env.NODE_ENV === 'production'
 
-client.connect();
+const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`
 
-module.exports = client;
+const pool = new Pool({
+  connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
+  ssl: isProduction,
+})
+
+module.exports = {pool}
