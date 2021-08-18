@@ -18,14 +18,4 @@ app.use(function (req, res, next) {
     next(err);
 });
 
-if (app.get("env") === "development") {
-    app.use(function (err, req, res, next) {
-        res.status(err.status || 500);
-        res.send({
-            message: err.message,
-            error: err
-        });
-    });
-}
-
 app.listen(3000, () => console.log(`Server starting on port ${port}`));

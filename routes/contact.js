@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db");
 
-router.post("/", async function (req, res, next) {
+router.post("/", async function (req, res) {
     try {
         if (!req.body.full_name || !req.body.email || !req.body.phone_number || !req.body.message) {
             return res.status(400).json({
@@ -17,16 +17,22 @@ router.post("/", async function (req, res, next) {
         );
         return res.json(result.rows[0]);     
     } catch (err) {
-        return next(err);
+        return res.status(400).json({
+            status: "error",
+            message: err.message
+        })
     }
 });
 
-router.get("/", async function (req, res, next) {
+router.get("/", async function (req, res) {
     try {
         const data = await db.query("SELECT * FROM contacts")
         return res.status(200).json(data.rows)
     } catch (err) {
-        return next(err)
+        return res.status(400).json({
+            status: "error",
+            message: err.message
+        })
     }
     
 })
