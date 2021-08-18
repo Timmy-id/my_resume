@@ -31,7 +31,7 @@ contactForm.addEventListener('submit', (e) => {
             phoneNumber.value = '',
             message.value = ''
         } else (
-            alert ('SOmething went wrong')
+            alert ('Something went wrong')
         )
     }
 
