@@ -188,7 +188,7 @@ input, textarea {
 
 @media (max-width:600px) {
     .container {
-        height: 1100px;
+        height: 1200px;
         width: auto;
         max-width: 95%;
     }
