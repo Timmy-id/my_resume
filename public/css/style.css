@@ -177,6 +177,15 @@ input, textarea {
     background-color: #45a049;
 }
 
+.footer img {
+    display: block;
+    margin: auto;
+}
+
+.footer p {
+    text-align: center;
+}
+
 @media (max-width:600px) {
     .container {
         height: 1100px;
