@@ -80,6 +80,16 @@ body {
     margin-bottom: -5px;
 }
 
+.p3 a {
+    color: grey;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.p3 a:hover {
+    color: #228b22;
+}
+
 .fa {
     color: #228b22;
 }
